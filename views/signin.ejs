@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
+   
+</head>
+<body>
+<div class="container">
+
+<h1> Tribes </h1>
+
+
+<form action="/home" method="GET">
+
+    <label for="usernameTextbox">Username:</label>
+  <input type="text" id="username"> <br/><br/>
+
+    <label for="passwordTextbox">Password:</label>
+  <input type="text" id="password"><br/><br/>
+  
+
+  <button type="submit" id="signinButton" class="btn-info">Sign In</button>
+
+</form>
+
+
+
+
+
+
+<form action="/register" method="POST">
+
+   <button type="button" id="registerButton" class="btn-success">
+   <a href="/register">Register</a>
+   </button>
+
+</form>
+
+
+
+</div>
+</body>
+</html>
