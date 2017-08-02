@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <title>MY APP</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
     <style>
       body {background-color: powderblue;}
@@ -30,11 +27,11 @@
 <div class="container">
 <div class="container container-table">
 
-   <!--  <div class="row vertical-center-row"> -->
+<div class="row">
 
+</div>
 
-
-<div class="col-sm-4">
+<div class="col-sm-6">
 
   <h2>May Node and Express be with you.</h2>
 
@@ -60,9 +57,9 @@
 
 
 <!-- <div class="row vertical-center-row"> -->
-<div class="col-sm-4">
+<div class="col-sm-6">
 
-<h2> Enter a Name and Quote:</h2>
+  <h2> Enter a Name and Quote:</h2>
   <form action="/quotes" method="POST">
     <input type="text" placeholder="name" name="name">
     <input type="text" placeholder="quote" name="quote">
@@ -71,22 +68,28 @@
     <button type="submit" class="btn-info">Submit</button>
   </form>
 
+  <div>
+    <h2>Replace last quote written by Master Yoda with a quote written by Darth Vadar</h2>
+    <button id="update"> Darth Vadar invades! </button>
+  </div>
+
+  <div>
+  <h2>Delete ______'s first quote</h2>
+  <input type="text" id="name_delete"/>
+  <button id="delete"> Delete first Darth Vadar quote </button>
+  </div>
+
+  <div>
+  <h3>Input Value</h3>
+  <input type="text" id="display value" placeholder="Placeholder"/>
+  <button id="show">Do</button>
+  </div>
+
 </div>
 
 
+    <script src="main.js"></script>
 
-
-
-<div class="col-sm-4">
-Go go go!
-</div>
-
-<!-- </div> -->
-
-</div>
-
-
-</div>
 
 
 </body>

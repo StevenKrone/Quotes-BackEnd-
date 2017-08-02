@@ -8,6 +8,14 @@ const app = express();
 //View engine for Display of 
 app.set('view engine', 'ejs');
 
+//Allows for Server to read JSON
+app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({extended: true}))
+
+//Allows Express access to files in 'public' folder
+app.use(express.static('public'))
+
+
 
 MongoClient.connect('mongodb://skrone:tribes@ds161041.mlab.com:61041/tribes', (err, database) => {
 	if(err) return console.log(err)
@@ -16,8 +24,6 @@ MongoClient.connect('mongodb://skrone:tribes@ds161041.mlab.com:61041/tribes', (e
 		console.log('listening on 3002')
 	})
 })
-
-app.use(bodyparser.urlencoded({extended: true}))
 
 app.listen(3001, function() {
 	console.log('listening on 3001')
@@ -30,13 +36,6 @@ app.listen(3001, function() {
 // 	response.sendFile(__dirname + '/index.html')
 // })
 
-
-
-
-
-
-
-
 app.post('/quotes', (req,res) =>{
 	db.collection('quotes').save(req.body, (err,result) => {
 		if(err) return console.log(err)
@@ -45,6 +44,34 @@ app.post('/quotes', (req,res) =>{
 		res.redirect('/')
 	})
 } )
+
+app.put('/quotes', (req,res) => {
+	db.collection('quotes')
+	.findOneAndUpdate({name: 'Yoda'},
+	{
+		$set: {
+			name: req.body.name,
+			quote: req.body.quote
+		}
+	},
+	{
+		sort: {_id: -1},
+		upsert: true
+	}, 
+	(err, result) => {
+		if(err) return res.send(err)
+		res.send(result)
+	})
+})
+
+app.delete('/quotes', (req,res) => {
+	db.collection('quotes').findOneAndDelete(
+	{name: req.body.name},
+  	(err, result) => {
+    if (err) return res.send(500, err)
+    res.send({message: 'A darth vadar quote got deleted'})
+  })
+})
 
 
 app.post('/CreateNewUser', (req,res) =>{
@@ -57,16 +84,6 @@ app.post('/CreateNewUser', (req,res) =>{
 		res.redirect('/signin')
 	})
 } )
-
-
-
-
-
-
-
-
-
-
 
 
 //URL Get that gets a MongoDB collection of quotes
@@ -119,25 +136,21 @@ app.get('/home', (req,res) => {
 			}
 			var err = new Error();
 			err.status = 310;
-			return done(err);`
+			return done(err);
+			
 		}
 
 	} )
 
-	// var collectionArray = db.collection('UserPerson').find().toArray(function(err, results) {
- //  	if (err) return console.log(err);})
-	// console.log(person);
+	var collectionArray = db.collection('UserPerson').find().toArray(function(err, results) {
+  	if (err) return console.log(err);})
+	console.log(person);
 
-
-
-
-
-
-	// var isHeAUser = true;
-	// if(isHeAUser)
-	// 	res.render('signin_homepage.ejs');
-	// else
-	// 	res.render('signin.ejs');
+	var isHeAUser = true;
+	if(isHeAUser)
+		res.render('signin_homepage.ejs');
+	else
+		res.render('signin.ejs');
 
 })
 
