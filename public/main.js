@@ -20,7 +20,12 @@ update.addEventListener('click', function () {
 })
 
 var del = document.getElementById('delete');
+
+//I've moved on from trying to have the "correct" value extracted from name.
+//Instead of ejs, I'd like to be using AngularJS. 
+//I can figure it out for ejs, but I'd have to relearn the solution.
 var name = document.getElementById('name_delete').value;
+
 
 del.addEventListener('click', function () {
   fetch('quotes', {
@@ -43,6 +48,8 @@ del.addEventListener('click', function () {
 
 
 //Used to Check what value is Passed from the 'name' constant
+
+//I've moved on from trying to have the "correct" value extracted from name.
 
 var check = document.getElementById("display value");
 var doe = document.getElementById("show");

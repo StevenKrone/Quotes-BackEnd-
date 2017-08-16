@@ -27,7 +27,6 @@ MongoClient.connect('mongodb://skrone:tribes@ds161041.mlab.com:61041/tribes', (e
 
 app.listen(3001, function() {
 	console.log('listening on 3001')
-
 })
 
 
